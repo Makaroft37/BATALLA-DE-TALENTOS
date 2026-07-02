@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Batalla de Talentos — SENA Bogotá</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1a1a1a;
+    --paper:#f7f3ec;
+    --orange:#ff6a39;
+    --teal:#1b3a4b;
+    --gold:#ffc727;
+    --line:#d8d0c2;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.7;
+  }
+  h1,h2,h3{font-family:'Fraunces',serif;margin:0;color:var(--teal);}
+
+  .strip{
+    background:var(--teal);color:var(--paper);
+    display:flex;justify-content:space-between;flex-wrap:wrap;
+    padding:10px 28px;font-size:0.72rem;
+    font-family:'IBM Plex Mono',monospace;letter-spacing:.05em;text-transform:uppercase;
+  }
+  .strip .accent{color:var(--gold);}
+
+  .hero{
+    position:relative;min-height:82vh;
+    display:flex;align-items:flex-end;
+    background:linear-gradient(180deg,rgba(26,26,26,.10),rgba(26,26,26,.88)),
+               url('media/IMG20260610134825.jpg') center top/cover no-repeat;
+  }
+  .hero-content{padding:60px 32px 52px;max-width:900px;color:var(--paper);}
+  .eyebrow{
+    color:var(--gold);font-size:.78rem;margin-bottom:14px;display:block;
+    font-family:'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;
+  }
+  .hero h1{
+    color:var(--paper);font-size:clamp(2.8rem,7vw,5.5rem);
+    font-weight:700;line-height:.98;text-transform:uppercase;letter-spacing:-1px;
+  }
+  .hero h1 em{font-style:italic;color:var(--orange);text-transform:none;}
+  .hero p.sub{margin-top:20px;font-size:1.05rem;max-width:580px;color:#e0d9ce;line-height:1.7;}
+
+  .lugar-badge{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:8px 18px;border-radius:999px;
+    font-family:'IBM Plex Mono',monospace;font-size:.78rem;
+    letter-spacing:.06em;text-transform:uppercase;font-weight:600;margin-bottom:22px;
+  }
+  .badge-1{background:#ffc727;color:#1a1a1a;}
+  .badge-2{background:#c0c8d0;color:#1a1a1a;}
+  .badge-3{background:#c87941;color:#fff;}
+  .medal{font-size:1.2rem;}
+
+  .section{max-width:1080px;margin:0 auto;padding:80px 28px 0;}
+  .section:last-of-type{padding-bottom:90px;}
+  .num{
+    font-family:'IBM Plex Mono',monospace;color:var(--orange);font-size:.8rem;
+    border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:26px;
+    display:flex;justify-content:space-between;letter-spacing:.05em;text-transform:uppercase;
+  }
+  .section h2{font-size:clamp(1.7rem,3.4vw,2.6rem);font-weight:500;max-width:700px;}
+  .section p.lead{max-width:700px;font-size:1rem;margin-top:16px;color:#3a3a3a;line-height:1.8;}
+
+  .two-col{display:grid;grid-template-columns:1.1fr 1fr;gap:36px;margin-top:36px;align-items:start;}
+  @media(max-width:760px){.two-col{grid-template-columns:1fr;}}
+
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:26px;}
+  @media(max-width:760px){.grid-2{grid-template-columns:1fr;}}
+
+  .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;margin-top:26px;}
+  @media(max-width:900px){.grid-3{grid-template-columns:1fr 1fr;}}
+  @media(max-width:560px){.grid-3{grid-template-columns:1fr;}}
+
+  .full-media{margin-top:26px;}
+
+  .media-frame{border:1px solid var(--line);background:#000;overflow:hidden;border-radius:4px;}
+  .media-frame img,.media-frame video{width:100%;display:block;}
+  .cap{margin-top:10px;font-size:.8rem;color:#555;font-family:'Inter',sans-serif;line-height:1.6;}
+
+  .text-block p{color:#3a3a3a;font-size:.97rem;line-height:1.8;}
+  .text-block p+p{margin-top:16px;}
+
+  .pull{
+    font-family:'Fraunces',serif;font-style:italic;font-size:1.5rem;
+    color:var(--teal);border-left:3px solid var(--orange);
+    padding-left:22px;margin:42px 0 0;max-width:620px;line-height:1.5;
+  }
+
+  .divider{max-width:1080px;margin:80px auto 0;padding:0 28px;border-top:1px solid var(--line);}
+
+  .cierre{max-width:1080px;margin:80px auto 0;padding:0 28px 90px;}
+  .cierre h2{font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:500;}
+  .cierre p.lead{max-width:700px;font-size:1rem;margin-top:16px;color:#3a3a3a;line-height:1.8;}
+  .cierre .full-img{margin-top:32px;}
+
+  .closing{background:var(--teal);color:var(--paper);padding:70px 28px;text-align:center;}
+  .closing h2{color:var(--paper);font-size:clamp(1.5rem,3vw,2.2rem);}
+  .closing p{max-width:580px;margin:16px auto 0;color:#cfd9de;font-size:1rem;line-height:1.8;}
+
+  footer{
+    text-align:center;padding:22px;font-size:.7rem;color:#8a8a8a;
+    font-family:'IBM Plex Mono',monospace;letter-spacing:.05em;text-transform:uppercase;
+  }
+</style>
+</head>
+<body>
+
+<div class="strip">
+  <div><span>SENA</span> &nbsp;<span class="accent">Bogotá D.C.</span> &nbsp;<span>10 jun 2026</span></div>
+  <div><span class="accent">Batalla de Talentos</span></div>
+</div>
+
+<section class="hero">
+  <div class="hero-content">
+    <span class="eyebrow">SENA · Bogotá D.C. · Junio 2026</span>
+    <h1>Batalla de<br><em>Talentos</em></h1>
+    <p class="sub">El 10 de junio de 2026, el auditorio del SENA en Bogotá fue testigo de un evento que reunió a estudiantes llenos de talento, pasión y creatividad. Durante una jornada memorable, cada participante tuvo la oportunidad de brillar frente a sus compañeros y un jurado exigente, compitiendo en tres categorías: baile, lectura en voz alta y artes visuales. Una batalla que demostró que el talento no tiene límites.</p>
+  </div>
+</section>
+
+<!-- ========== 1er LUGAR: BAILE ========== -->
+<section class="section">
+  <div class="num">
+    <span>01 — Primer Lugar</span>
+    <span>Baile</span>
+  </div>
+  <div class="lugar-badge badge-1"><span class="medal">🥇</span> Primer Lugar — Baile</div>
+  <h2>La energía del escenario se tomó el auditorio</h2>
+  <p class="lead">Las presentaciones de baile se llevaron el primer lugar de la Batalla de Talentos con coreografías que encendieron el ambiente del auditorio desde el primer segundo. Los participantes demostraron no solo habilidad técnica, sino también una entrega total al escenario que contagió de emoción a todos los presentes. Cada movimiento fue aplaudido con fuerza, convirtiendo esta categoría en la más aclamada de la jornada.</p>
+
+  <div class="two-col">
+    <div>
+      <div class="media-frame">
+        <img src="media/IMG20260610110835.jpg" alt="Keiver Rumbo en el escenario">
+      </div>
+      <p class="cap">Nuestro compañero Keiver Rumbo subió al escenario y demostró con gran valentía y talento su destreza en el baile. Con seguridad, carisma y cada uno de sus movimientos, logró transmitir una energía única que emocionó al público y dejó una huella imborrable en la Batalla de Talentos. Su presentación fue un ejemplo de esfuerzo, dedicación y amor por el arte.</p>
+    </div>
+    <div>
+      <div class="media-frame">
+        <img src="media/IMG20260610112022.jpg" alt="Pareja de baile en el escenario">
+      </div>
+      <p class="cap">Una pareja de participantes ejecutó una coreografía llena de ritmo y sincronía que hizo levantar a más de uno de su silla. La química entre ambos bailarines y el dominio del espacio escénico fueron los elementos que más destacó el jurado al otorgarles el primer lugar.</p>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div>
+      <div class="media-frame">
+        <video controls src="media/VID20260610110845.mp4"></video>
+      </div>
+      <p class="cap">Registro completo de la presentación de baile — parte 1. Aquí se puede apreciar la entrada al escenario y el inicio de la coreografía que conquistó al jurado.</p>
+    </div>
+    <div>
+      <div class="media-frame">
+        <video controls src="media/VID20260610111514.mp4"></video>
+      </div>
+      <p class="cap">Parte 2 del registro en video. El momento de mayor intensidad de la presentación, donde el público respondió con aplausos espontáneos.</p>
+    </div>
+    <div>
+      <div class="media-frame">
+        <video controls src="media/VID20260610111718.mp4"></video>
+      </div>
+      <p class="cap">Parte 3 y cierre de la presentación ganadora. Un final que dejó al auditorio de pie con una ovación cerrada para los participantes.</p>
+    </div>
+  </div>
+
+  <p class="pull">"El público no paró de aplaudir — fue el momento más emocionante y vibrante de toda la batalla."</p>
+</section>
+
+<!-- ========== 2do LUGAR: LECTURA ========== -->
+<div class="divider"></div>
+<section class="section">
+  <div class="num">
+    <span>02 — Segundo Lugar</span>
+    <span>Lectura</span>
+  </div>
+  <div class="lugar-badge badge-2"><span class="medal">🥈</span> Segundo Lugar — Lectura</div>
+  <h2>La palabra tomó el centro del escenario</h2>
+  <p class="lead">La categoría de lectura en voz alta demostró que las palabras también tienen el poder de cautivar y emocionar a un auditorio entero. Con voces firmes, expresión cuidada y una presencia escénica admirable, los participantes se plantaron frente al público y leyeron con una intensidad que generó silencios llenos de atención y momentos de verdadera conexión. El jurado reconoció en esta categoría el esfuerzo, la preparación y la capacidad de cada estudiante para comunicar desde el alma.</p>
+
+  <div class="grid-3">
+    <div>
+      <div class="media-frame">
+        <img src="media/IMG20260610112716.jpg" alt="Participante leyendo en voz alta">
+      </div>
+      <p class="cap">Un participante da inicio a su presentación de lectura, con el texto en mano y la voz bien proyectada hacia el auditorio lleno de compañeros y jurado.</p>
+    </div>
+    <div>
+      <div class="media-frame">
+        <img src="media/IMG20260610112714.jpg" alt="Participante leyendo en voz alta">
+      </div>
+      <p class="cap">La concentración y la expresividad fueron claves durante la lectura. Cada pausa, cada entonación y cada gesto comunicaban algo más allá de las simples palabras escritas.</p>
+    </div>
+    <div>
+      <div class="media-frame">
+        <img src="media/IMG20260610112712.jpg" alt="Participante leyendo en voz alta">
+      </div>
+      <p class="cap">El escenario, enmarcado por las banderas del SENA y de Colombia, sirvió de fondo para una de las presentaciones más íntimas y emotivas de la jornada.</p>
+    </div>
+    <div>
+      <div class="media-frame">
+        <img src="media/IMG20260610112410.jpg" alt="Participante leyendo con micrófono">
+      </div>
+      <p class="cap">Con micrófono en mano y total dominio del escenario, el participante logró proyectar su voz con claridad y emoción, conectando con cada rincón del auditorio.</p>
+    </div>
+    <div>
+      <div class="media-frame">
+        <img src="media/IMG20260610113754.jpg" alt="Participante en el podio leyendo">
+      </div>
+      <p class="cap">Desde el podio del SENA, uno de los participantes cerró la ronda de lecturas con aplomo y seguridad, dejando al público reflexivo y emocionado con sus palabras.</p>
+    </div>
+  </div>
+
+  <div class="full-media">
+    <div class="media-frame">
+      <video controls src="media/VID20260610115800.mp4"></video>
+    </div>
+    <p class="cap">Registro completo en video de la presentación de lectura en voz alta. Este momento captura la esencia de la categoría: talento, preparación y el poder transformador de la palabra.</p>
+  </div>
+
+  <p class="pull">"La lectura en voz alta es también un talento: el de hacer que las palabras de otro resuenen como propias."</p>
+</section>
+
+<!-- ========== 3er LUGAR: DIBUJO ========== -->
+<div class="divider"></div>
+<section class="section">
+  <div class="num">
+    <span>03 — Tercer Lugar</span>
+    <span>Artes Visuales</span>
+  </div>
+  <div class="lugar-badge badge-3"><span class="medal">🥉</span> Tercer Lugar — Dibujo e Ilustración</div>
+  <h2>El arte visual dijo más que mil palabras</h2>
+  <p class="lead">En la categoría de artes visuales, los estudiantes llevaron al escenario meses de trabajo, creatividad y dedicación plasmados en papel, lienzo y pantalla. Cada obra fue presentada por su autor, quien explicó al jurado y al público la historia detrás de su creación, las técnicas utilizadas y el mensaje que quería transmitir. Desde retratos clásicos hasta visiones futuristas de la ciudad de Bogotá, la muestra evidenció la riqueza artística que habita en el programa.</p>
+
+  <div class="grid-3">
+    <div>
+      <div class="media-frame">
+        <img src="media/IMG20260610121635.jpg" alt="Presentación de dibujos e ilustraciones">
+      </div>
+      <p class="cap">Dos participantes presentan sus piezas ante el público: una impactante ilustración de un astronauta frente a un agujero negro y la propuesta de diseño urbano "Bogotá 2050", que imaginó la ciudad desde una perspectiva futurista y colorida.</p>
+    </div>
+    <div>
+      <div class="media-frame">
+        <img src="media/IMG20260610122002.jpg" alt="Presentación de ilustraciones en los paneles">
+      </div>
+      <p class="cap">Los paneles decorados en rojo y azul sirvieron de galería temporal para exponer los trabajos. Cada participante presentó su obra con seguridad, describiendo el proceso creativo y las técnicas empleadas para lograr el resultado final.</p>
+    </div>
+    <div>
+      <div class="media-frame">
+        <img src="media/IMG20260610120814.jpg" alt="Paneles con dibujos y obras de los estudiantes">
+      </div>
+      <p class="cap">Una vista general de los paneles de exposición revela la variedad de estilos y técnicas presentes: desde el dibujo a lápiz más detallado hasta la pintura de gran formato, pasando por ilustraciones digitales impresas con alta calidad.</p>
+    </div>
+  </div>
+
+  <div class="text-block" style="margin-top:30px;">
+    <p>Los trabajos revelaron una extraordinaria diversidad de técnicas y visiones. La pintura acrílica, el lápiz de grafito, la tinta china y el diseño especulativo convivieron en el mismo escenario, mostrando que cada artista tiene una voz propia y una forma particular de ver y representar el mundo.</p>
+    <p>La propuesta "Bogotá 2050" fue especialmente llamativa: con colores vibrantes y una composición llena de detalles, su autor imaginó una versión futura de la capital colombiana que combinaba arquitectura moderna, naturaleza y cultura urbana. Una obra que invitó a soñar con el futuro de la ciudad desde los ojos y el corazón de un joven bogotano.</p>
+  </div>
+
+  <p class="pull">"Cada trazo contaba una historia distinta — desde el espacio exterior hasta la Bogotá que soñamos para el futuro."</p>
+</section>
+
+<!-- ========== FOTO GRUPAL ========== -->
+<div class="divider"></div>
+<div class="cierre">
+  <div class="num">
+    <span>04 — Participantes</span>
+    <span>Todos los talentos</span>
+  </div>
+  <h2>Todos los participantes de la Batalla de Talentos</h2>
+  <p class="lead">Al finalizar la jornada, todos los que hicieron posible este evento se reunieron en el escenario para la foto grupal. Con los certificados en alto y las sonrisas que solo da la satisfacción del deber cumplido, los participantes cerraron una batalla memorable. Cada uno de ellos llegó con un talento diferente y se fue con el reconocimiento de sus compañeros, la valoración del jurado y el orgullo de haber dado lo mejor de sí mismo frente a un auditorio lleno.</p>
+  <div class="full-img">
+    <div class="media-frame">
+      <img src="media/IMG20260610134825.jpg" alt="Foto grupal de todos los participantes con sus certificados">
+    </div>
+    <p class="cap">Foto grupal de todos los participantes de la Batalla de Talentos con sus certificados — SENA Bogotá, 10 de junio de 2026. Un recuerdo que quedará grabado en la memoria de todos los que estuvieron presentes.</p>
+  </div>
+</div>
+
+<div class="closing">
+  <h2>¡Gracias a todos los que hicieron posible este día!</h2>
+  <p>Cada talento que subió al escenario, cada mano que aplaudió y cada ojo que contempló las obras hizo de esta batalla un evento único, irrepetible y profundamente humano. El SENA se enorgullece de contar con estudiantes tan comprometidos, creativos y valientes. ¡Hasta la próxima Batalla de Talentos!</p>
+</div>
+<footer>SENA · Bogotá D.C. · Junio 2026 — Batalla de Talentos</footer>
+
+</body>
+</html>
